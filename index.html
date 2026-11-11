@@ -527,7 +527,9 @@ const TABS={
 };
 const MAILCOLS=['id','fecha','texto','de','asunto'];
 const CFGK='misfinanzas.cfg',TOKK='misfinanzas.tok';
-let CFG=loadJ(CFGK)||{};let TOK=loadJ(TOKK);
+// Client ID público del proyecto "Mis Finanzas" en Google Cloud (no es un secreto; solo funciona desde ram78ram.github.io).
+const DEFAULT_CLIENT_ID='653658063860-c5f52glvolbte4vocfn2ofjjqu07l9m5.apps.googleusercontent.com';
+let CFG=loadJ(CFGK)||{};if(!CFG.clientId&&location.hostname==='ram78ram.github.io')CFG.clientId=DEFAULT_CLIENT_ID;let TOK=loadJ(TOKK);
 const tokOk=()=>!!(TOK&&TOK.t&&TOK.exp>Date.now()+60000);
 let syncState='off',syncMsg='',syncing=false,again=false,syncT=null;
 
